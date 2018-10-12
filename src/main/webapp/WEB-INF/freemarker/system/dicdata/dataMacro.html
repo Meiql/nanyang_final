@@ -1,0 +1,10 @@
+<#macro dataList typekey>
+	<@dicdata_list typekey="${typekey}">
+		<option value="">请选择</option>
+		<#if tag_list?? && (tag_list?size>0)>
+			<#list tag_list as _data>
+			<option value="${(_data.id)!''}">${(_data.name)!''}</option>
+			</#list>
+		</#if>
+	</@dicdata_list>
+</#macro>

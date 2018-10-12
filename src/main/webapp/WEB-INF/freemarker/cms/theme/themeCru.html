@@ -1,0 +1,183 @@
+<#ftl output_format="HTML" auto_esc=true>
+<@h.commonHead title="后台管理系统" keywords="开源,永久免费" description="springrain开源系统管理后台"/>
+
+<script src="${ctx}/js/validform/validform.min.js"></script>
+<link rel="stylesheet" href="${ctx}/js/validform/validform.css" media="all">
+<script>
+	var _active;
+	var _themeType;
+	 jQuery(function(){
+		 _active="${(returnDatas.data.active)!''}";
+		 _themeType="${(returnDatas.data.themeType)!''}";
+		 jQuery("#active").val(_active);
+		 jQuery("#themeType").val(_themeType);
+		 /*
+		 init_valid(_before,_after)
+		 @_before:提交表单前，调用 的函数   可以为空，一般有validform处理不了，独自进行处理时使用
+		 @_after:保存成功后，调用的函数  可以为空，一般为对应的列表页面
+		 */
+		 springrain.initValid(null,function(){window.location.href="${ctx}/system/theme/list?springraintoken="+springraintoken});
+	 });
+	 function add(){
+			//debugger;
+			jQuery("#addTbody").parents("table").removeClass("off");
+			var _html=["<tr>",
+							"<td><input type='text'  name='name' placeholder='模板名称' class='layui-input'></td>",
+							"<td><input type='text'  name='ftlfile' placeholder='模板路径' class='layui-input'></td>",
+							"<td><select name='modelType'><option value>模板类型</option><option value='1'>前台主页</option><option value='10'>前台文章列表页</option><option value='11'>前台文章列表DOM页</option><option value='4'>站长后台主页</option><option value='40'>站长后台文章列表页</option><option value='40'>站长后台文章列表页</option><option value='41'>站长后台文章编辑页</option><option value='42'>站长后台文章查看页</option></select></td>",
+							"<td><select name='themeType'><option value>平台类型</option><option value='1'>PC</option><option value='2'>手机</option><option value='3'>PC+手机</option></select></td>",
+							"<td><a onclick='del(this)' class='layui-btn layui-btn-danger layui-btn-mini ajax-delete'>删除</a></td>",
+						"</tr>"].join('');
+			var _html=jQuery(_html);
+			jQuery("#addTbody").append(_html);
+			form.render();
+			jQuery(_html).find("input[name='managerOrgNames']").trigger("click");
+			
+	}
+</script>
+</head>
+<body>
+	<div class="layui-layout layui-layout-admin">
+		<@h.naviHeader /><@h.leftMenu />
+		<!-- 主体内容开始 -->
+			<div class="layui-tab layui-tab-brief">
+				<ul class="layui-tab-title site-demo-title">
+		            <li class="layui-this">
+		            </li>
+		             <li style="float:right;">
+				        <button type="button" onclick="history.go(-1)" class="layui-btn layui-btn-small" style="margin-top:8px;"><i class="layui-icon layui-icon-specil">&#xe603;</i>返回</button>
+		             </li>
+	       		</ul>
+				
+				<div class="layui-body layui-tab-content site-demo-body">
+					<div class="layui-tab-item layui-show">
+							<div class="layui-main">
+						          <div id="LAY_preview" class="layui-my-form">
+						          				<header class="larry-personal-tit">
+													<span>添加主题表</span>
+												</header>
+												<div class="larry-personal-body clearfix changepwd">
+													<form id="validForm" class="layui-form <!--  -->"  method="post" action="${ctx}/system/theme/update">
+																<input type="hidden" id="id" name="id" value="${(returnDatas.data.id)!''}"/>	
+																	<#if returnDatas.data??>
+																	<div class="layui-form-item col-lg-6">
+																		<label class="layui-form-label">使用次数*</label>
+																		<div class="layui-inline col-lg-5">  
+																			<#--<input type="text" name="usecount" id="usecount" datatype="*" nullmsg="不能为空" errormsg="不能为空！" autocomplete="off" class="layui-input" value="${(returnDatas.data.usecount)!''}">-->
+																			<input type="text"  class="layui-input" style="background:#d3d3d3;" readonly value="${(returnDatas.data.usecount)!''}">
+																		</div>
+																		<div class="layui-inline valid-info"></div>
+																	</div>
+																	</#if>
+																	<div class="layui-form-item col-lg-6">
+																		<label class="layui-form-label">名称*</label>
+																		<div class="layui-inline col-lg-5">  
+																			<input type="text" name="name" id="name" datatype="*" nullmsg="不能为空" errormsg="不能为空！" autocomplete="off" class="layui-input" value="${(returnDatas.data.name)!''}">
+																		</div>
+																		<div class="layui-inline valid-info"></div>
+																	</div>
+																	<div class="layui-form-item col-lg-6">
+																		<label class="layui-form-label">模板根目录*</label>
+																		<div class="layui-inline col-lg-5">  
+																			<input type="text" name="rootDir" id="rootDir" datatype="*" nullmsg="不能为空" errormsg="不能为空！" autocomplete="off" class="layui-input" value="${(returnDatas.data.rootDir)!''}">
+																		</div>
+																		<div class="layui-inline valid-info"></div>
+																	</div>
+																	<div class="layui-form-item col-lg-6">
+																		<label class="layui-form-label">模板类型*</label>
+																		<div class="layui-inline col-lg-5"> 
+																			<select name="themeType" id="themeType" datatype="*" nullmsg="不能为空" errormsg="不能为空！" >
+																				<option value>请选择模板类型</option>
+																				<option value="1">PC</option>
+																				<option value="2">手机</option>
+																				<option value="3">PC+手机</option>
+																			</select> 
+																		</div>
+																		<div class="layui-inline valid-info"></div>
+																	</div>
+																	<div class="layui-form-item col-lg-6">
+																		<label class="layui-form-label">是否可用*</label>
+																		<div class="layui-inline col-lg-5">  
+																			<select name="active" id="active" datatype="*" nullmsg="不能为空" errormsg="不能为空！">
+																				<option value>是否可用</option>
+																				<option value="1">可用</option>
+																				<option value="0">不可用</option>
+																			</select>
+																		</div>
+																		<div class="layui-inline valid-info"></div>
+																	</div>
+																	<#--
+																	<div class="layui-form-item col-lg-6">
+																		<label class="layui-form-label">对应模板</label>
+																		<div class="layui-inline col-lg-5">  
+																			<button type="button" onclick="add()" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe64c;</i>添加模板</button>
+																		</div>
+																		<div class="layui-inline valid-info"></div>
+																	</div>
+																	-->
+																	<div class="layui-form-item col-lg-8">
+															    		<label class="layui-form-label"></label>
+																		   <div class="layui-inline col-lg-8">  
+																				 <table class="layui-table nospec <#if (returnDatas.data??) &&(returnDatas.data.managerOrgs??) &&(returnDatas.data.managerOrgs?size gt 0)><#else>off</#if>">
+																					 	<colgroup>
+																				    		<col width="">
+																					    	<col width="160">
+																					    	<col width="160">
+																					    	<col width="80">
+																				  		</colgroup>
+																				  		<thead>
+																							<tr>
+																								<th>名称</th>
+																								<th>FTL路径</th>
+																								<th>链接类型</th>
+																								<th>模板类型</th>
+																								<th>操作</th>
+																							</tr>
+																						</thead>
+																						<tbody id="addTbody">
+																							<#if (returnDatas.data??) &&(returnDatas.data.managerOrgs??) &&(returnDatas.data.managerOrgs?size gt 0)>
+																								<#list returnDatas.data.managerOrgs as _data>
+																									<tr>
+																										<td><input type='text' readonly onclick='showMangerZtreeOrg(this)'   name='managerOrgNames' placeholder='单击选择' class='layui-input' value="${(_data.orgName)!''}"><input type='hidden' name='managerOrgIds' value="${(_data.orgId)!''}"></td>
+																										<td>
+																											<select name='managerType'>
+																												<option value='10' <#if _data.managerType?c=='10'>selected</#if>>员工</option>
+																												<option value='11' <#if _data.managerType?c=='11'>selected</#if>>主管</option>
+																												<option value='12' <#if _data.managerType?c=='12'>selected</#if>>代理主管</option>
+																												<option value='13' <#if _data.managerType?c=='13'>selected</#if>>虚拟主管</option>
+																											</select>
+																										</td>
+																										<td>
+																											<select name='hasleaf'  lay-filter="hasleaf">
+																												<option value='0' <#if _data.hasleaf?c=='0'>selected</#if>>不包含</option>
+																												<option value='1' <#if _data.hasleaf?c=='1'>selected</#if>>包含</option>
+																											</select>
+																										</td>
+																										<td><a onclick='del(this)' class='layui-btn layui-btn-danger layui-btn-mini ajax-delete'>删除</a></td>
+																									</tr>
+																								</#list>
+																							</#if>
+																						</tbody>
+																					</table>
+																			</div>
+																	     <div class="layui-inline valid-info"></div>
+																  	</div>
+													<div class="layui-form-item change-submit">
+													<label class="layui-form-label"></label>
+															<div class="layui-inline">
+																<button type="button" class="layui-btn" id="smtbtn">保存</button>
+																<button type="button" class="layui-btn layui-btn-primary" id="rstbtn">重置</button>
+															</div>
+														</div>
+													</form>
+												</div>
+								  </div>
+							</div>
+					</div>
+			</div>
+		</div>
+		<!-- 主体内容结束 -->
+		<@h.footer />
+	</div>
+</body>
+</html>

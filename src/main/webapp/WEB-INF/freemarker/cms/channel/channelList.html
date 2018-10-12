@@ -1,0 +1,668 @@
+<#ftl output_format="HTML" auto_esc=true> 
+<@h.commonHead title="后台管理系统" keywords="开源,永久免费" description="springrain开源系统管理后台"/>
+
+<script type="text/javascript" src="${ctx}/js/ztree/js/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="${ctx}/js/ztree/js/ztreeUtils.js"></script>
+<script type="text/javascript" src="${ctx}/js/artTemplate/artTemplate.js"></script>
+<script type="text/javascript" src="${ctx}/js/validform/validform.min.js"></script>
+
+<link rel="stylesheet" href="${ctx}/js/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="${ctx}/css/custom/common/myztree.css" type="text/css">
+<link rel="stylesheet" href="${ctx}/js/validform/validform.css" media="all">
+<script>
+    jQuery(function(){ 
+    	jQuery(".hform").find("div[cat]").css('display',"none");
+    	jQuery(".hform").find("fieldset[cat]").css('display',"none");
+    	
+        /*
+        全选、反选
+        */
+        jQuery("#checkAll").bind('click',function(){
+            var _is_check=jQuery(this).get(0).checked;
+            jQuery("input[name='check_li']").each(function(_i,_o){
+                jQuery(_o).get(0).checked=_is_check;
+            });
+        });
+        
+        //加载栏目列表
+        loadChannelList();
+    });
+    function del(_id){
+        delWrap(_id,"${ctx}/system/cms/channel/delete");
+    }
+    
+    var channelJsondata4select;
+    var saveType=0;
+    function loadChannelList(){
+        jQuery.post("${ctx}/system/cms/channel/list/json",function(_json) {
+            if (_json.status == "success") {
+            	channelJsondata4select = _json;
+                //树节点点击事件
+                var treeNodeClickFunc = function(event, treeId, treeNode){
+                    if(jQuery(event.target).hasClass("myctr")){
+                        //阻止事件冒泡
+                        return;
+                    }
+                    saveType=1;
+                    jQuery(".add_div a").attr('tid',treeNode.tId);
+                    if (treeNode.pid!='null'){
+                    	showdata(treeNode);
+                    }
+                };
+                //添加子栏目方法回调
+                var addSubChannelFunc = function(tree,node){
+                	saveType=0;
+		    		jQuery("#updateForm")[0].reset();
+		    		jQuery("#pname").val(node.name);
+		    		var parentNode = node.getParentNode();
+		    		if(!!parentNode){
+		    			jQuery("#pid").val(node.id);
+		    			while(!!parentNode){
+			    			var tempParentNode = parentNode.getParentNode();
+							if(!!tempParentNode){
+								parentNode = tempParentNode;
+							}else{
+								break;
+							}
+			    		}
+		    		}else{
+		    			parentNode = node;	
+		    		}
+		    		$("#siteId").val(parentNode.id);
+                };
+                var editTplLink=function(tree,node){
+                	if(node.siteId==undefined&&node.id.indexOf("s_")==0){
+                		springrain.info("站点不允许编辑链接", null)
+                		return;
+                	}
+                	jQuery("#updateForm_hidden").find("#siteId").val(node.siteId);
+                	jQuery("#updateForm_hidden").find("#businessId").val(node.id);
+                    var _my_open=layer.open({
+                      shadeClose:true,
+                      type: 1,
+                      maxmin: true,
+                      title: "编辑链接相关",
+                      area: ['800px', '600px'], //宽高
+                      content: $("#tpl_modify_wrap"),
+                      closeBtn: 1,
+                      btn: ['确认','取消'], //按钮
+                      yes:function(index, layero){
+                    	  springrain.commonSaveForm("updateForm_hidden", null, "链接保存成功", null, function(data){
+                    		  if(data.status=="error"){
+                    			  springrain.info(data.message, null);
+                    		  }else{
+                    			  springrain.info("数据修改成功", null);
+                    			  layer.close(index);
+                    		  }
+                    	  });
+                    	 // jQuery("#addTbody tr").last().remove();
+                            //layer.close(index); //如果设定了yes回调，需进行手工关闭
+                      },
+                      end:function(index, layero){
+                    	  jQuery(".hform").find("div[cat],fieldset[cat]").css('display',"none");
+                    	  jQuery("#updateForm_hidden").find("#siteId").val("");
+                    	  jQuery("#updateForm_hidden").find("#businessId").val("");
+                    	  jQuery("#updateForm_hidden")[0].reset();
+                      }
+                    });
+                    loadTpl(node.id,node.siteId);
+                    layer.full(_my_open); 
+                };
+                //删除方法回调
+                var delChannelFunc = function(tree,node){
+                	if(node.siteId==undefined&&node.id.indexOf("s_")==0){
+                		springrain.info("站点不允许删除", null)
+                		return;
+                	}else{
+                		springrain.confirm('删除这个栏目，其子栏目也将被删除，是否继续?', function(index) {
+                   			var id = node.id;
+                   			var siteId = node.siteId;
+       		    			if (!id || id == "") {
+       		    				springrain.alert('请选择你要删除的记录!');
+       		    				return false;
+       		    			} else {
+       		    				var _url = "${ctx}/system/cms/channel/delete";
+       		    				var listurl = "${ctx}/system/cms/channel/list";
+       		    				var data = {
+       		    					"id" : id,
+       		    					"siteId":siteId
+       		    				};
+       		    				springrain.ajaxpostonlayer(_url, listurl, data, '删除菜单成功！');
+       		    			}
+                    		
+    		    			layer.close(index);
+                    	});
+                	}
+                	
+                };
+                var opt = {
+                    'hasMenu':true,
+                    'id':'channelListTree',
+                    'data':_json.data,
+                    'treeNodeClick':treeNodeClickFunc,
+                    'btns':[
+                        {'text':'添加子栏目','callback':addSubChannelFunc},
+                        {'text':'编辑模板链接','callback':editTplLink},
+                        {'text':'删除','callback':delChannelFunc}
+                    ]
+                };
+                springrain.tree(opt);
+            }else{
+                myalert(_json.message);
+            }
+        });
+    }
+    function loadTpl(_chanelId,_siteId){
+    	jQuery("#updateForm_hidden").find("#siteId").val(_siteId);
+    	jQuery.ajax({
+    		url:"${ctx}/system/template/ajax/tpl?chanelId="+_chanelId+"&siteId="+_siteId,
+    		type:"post",
+    		dataType:"json",
+    		async:false,
+    		success:function(data){
+    			data=data.map;
+    			if(data==null)return;
+    			var _pcs=data.pc;
+    			var _waps=data.wap;
+    			if(_pcs!=null){
+    				for(var i=0;i<_pcs.length;i++){
+    					jQuery("div[cat='pc_"+_pcs[i].modelType+"']").css('display','block');
+    					if(_pcs[i].cmsLink!=null&&_pcs[i].cmsLink.ftlfile!=null){
+    						jQuery("div[cat='pc_"+_pcs[i].modelType+"']").find("input[type='text']").val(_pcs[i].cmsLink.ftlfile);
+    						jQuery("div[cat='pc_"+_pcs[i].modelType+"']").find("input[type='hidden']").val(_pcs[i].cmsLink.id)
+    					}
+    					if(_pcs[i].modelType==10){
+    						jQuery("fieldset[cat='pc']").css('display','block');
+    						jQuery("div[cat='pc_info']").css('display','block');
+    						 
+    						jQuery("div[cat='pc_jump']").css('display','block').find("select[name='pc_jumpType']").val(_pcs[i].cmsLink==undefined?"":_pcs[i].cmsLink.jumpType);
+    						jQuery("div[cat='pc_link']").css('display','block').find("input[name='pc_link']").val(_pcs[i].cmsLink==undefined?"":_pcs[i].cmsLink.link);
+    						jQuery("div[cat='pc_child']").css('display','block').find("input[name='pc_childFtl']").val(_pcs[i].cmsLink==undefined?"":_pcs[i].cmsLink.childftlfile);
+    						jQuery("div[cat='pc_islogin']").css('display','block').find("select[name='pc_loginuser']").val(_pcs[i].cmsLink==undefined?"":_pcs[i].cmsLink.loginuser);
+    						jQuery("div[cat='pc_znr']").css('display','block').find("input[name='pc_nodeftlPath']").val(_pcs[i].cmsLink==undefined?"":_pcs[i].cmsLink.nodeftlfile);
+    					}
+    				}
+    			}
+    			if(_waps!=null){
+    				for(var i=0;i<_waps.length;i++){
+    					jQuery("div[cat='wap_"+_waps[i].modelType+"']").css('display','block');
+    					if(_waps[i].cmsLink!=null&&_waps[i].cmsLink.ftlfile!=null){
+    						jQuery("div[cat='wap_"+_waps[i].modelType+"']").find("input[type='text']").val(_waps[i].cmsLink.ftlfile);
+    						jQuery("div[cat='wap_"+_waps[i].modelType+"']").find("input[type='hidden']").val(_waps[i].cmsLink.id)
+    					}
+    					if(_waps[i].modelType==10){
+    						jQuery("fieldset[cat='wap']").css('display','block');
+    						jQuery("div[cat='wap_info']").css('display','block');
+    						jQuery("div[cat='wap_jump']").css('display','block').find("select[name='wap_jumpType']").val(_waps[i].cmsLink==undefined?"":_waps[i].cmsLink.jumpType);
+    						jQuery("div[cat='wap_link']").css('display','block').find("input[name='wap_link']").val(_waps[i].cmsLink==undefined?"":_waps[i].cmsLink.link);
+    						jQuery("div[cat='wap_child']").css('display','block').find("input[name='wap_childFtl']").val(_waps[i].cmsLink==undefined?"":_waps[i].cmsLink.childftlfile);
+    						jQuery("div[cat='wap_islogin']").css('display','block').find("select[name='wap_loginuser']").val(_waps[i].cmsLink==undefined?"":_waps[i].cmsLink.loginuser);
+    						jQuery("div[cat='wap_znr']").css('display','block').find("input[name='wap_nodeftlPath']").val(_waps[i].cmsLink==undefined?"":_waps[i].cmsLink.nodeftlfile);
+    					}
+    				}
+    			}
+    		}
+    	});
+    }
+    //树节点点击方法
+    function showdata(result){
+    	$("#updateForm select ").each(function() {
+			$(this).find('option:first').attr('selected','selected');
+		});
+		//console.log(result);
+		for ( var s in result) {
+			set_val(s, result[s]);
+		}				
+		var _pid = result["pid"];
+		if ((!_pid) || _pid == null || _pid == "null" || _pid == "") {
+			jQuery("#pid").val("");
+		} else {
+			jQuery("#pid").val(_pid);
+		}
+		var _pNode = result.getParentNode();
+		if (_pNode) {
+			jQuery("#pname").val(_pNode["name"]);
+		} else {
+			jQuery("#pname").val("");
+		}
+    }
+    
+    //点击显示父级菜单函数
+    var selectChannelZtree;
+    function showChannelZTree() {
+		if (!selectChannelZtree) {
+			selectChannelZtree=springrain.tree({
+				'hasMenu':false,
+				'id':'channelZtree',
+				'data':channelJsondata4select.data,
+				'treeNodeClick':function(event, treeId, treeNode){
+					if(!!treeNode.pid){
+						jQuery("#pid").val(treeNode.id);
+						var parentNode = treeNode.getParentNode();
+						while(!!parentNode){
+							var tempParentNode = parentNode.getParentNode();
+							if(!!tempParentNode){
+								parentNode = tempParentNode;
+							}else{
+								break;
+							}
+								
+						}
+						console.log(parentNode);
+						$("#siteId").val(parentNode.id);
+					}
+						
+					jQuery("#pname").val(treeNode.name);
+				}
+			});
+			
+			selectChannelZtree.expandAll(true);
+			selectZtreeOneNode(jQuery("#pid").val(), "channelZtree");
+		}
+		//页面层-自定义
+		layer.open({
+			shadeClose : true,
+			closeBtn : 1,
+			btn : [ '确定' ], //按钮
+			type : 1,
+			title : "选择父菜单",
+			area : [ '600px', '400px' ], //宽高
+			//shadeClose: true,
+			content : $("#div_channelZtree")
+		});
+	}
+    
+    
+	function dosubmit() {
+		var _j_t=jQuery("#jumpType").val();
+		var _link=jQuery("#link").val();
+		if(_j_t=="1"||_j_t=="2"){
+			if(_link==null||_link==""||jQuery.trim(_link).length<=0){
+				springrain.info("非默认跳转情况下，需要指定跳转链接");
+				return;
+			}
+		}
+		if(_j_t=="1"){
+			if(_link.toLowerCase().indexOf("http")==-1||_link.toLowerCase().indexOf("http")!=0){
+				springrain.info("自定义跳转情况下，链接需要http开头");
+				return;
+			}
+		}
+		var msg = "菜单添加成功！";
+		if (saveType == 1) {
+			msg = "菜单更新成功！";
+		}
+		var listurl = '${ctx}/system/cms/channel/list';
+		if (saveType == 0) {
+			springrain.commonSaveForm("updateForm",listurl, '菜单添加成功！');
+		} else {
+			springrain.commonUpdateForm("updateForm",listurl, '菜单更新成功！');
+		}
+	}
+</script>
+
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <@h.naviHeader /><@h.leftMenu />
+        <!-- 主体内容开始 -->
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title site-demo-title">
+                <li style="float: right;">
+                    <@shiro.hasPermission name="/system/cms/channel/update" >
+                    <!-- <button type="button" class="layui-btn layui-btn-small"
+                        data-action="${ctx}/system/cms/channel/update/pre">
+                        <i class="layui-icon layui-icon-specil">&#xe61f;</i>新增
+                    </button> -->
+                    </@shiro.hasPermission>
+                    <@shiro.hasPermission name="/system/cms/channel/delete" >
+                    <!-- <button type="button"
+                        class="layui-btn layui-btn-danger layui-btn-small">
+                        <i class="layui-icon">&#xe640;</i>批量删除
+                    </button> -->
+                    </@shiro.hasPermission>
+                </li>
+            </ul>
+
+            <div class="layui-body layui-tab-content site-demo-body">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-main">
+                        <div class="container-fluid" style="overflow:hidden;">
+                            <div class="row">
+                                <div class="fl per30" style="min-width:360px">
+                                    <ul id="channelListTree" class="ztree"></ul>
+                                </div>
+                                <div class="fl per60 rlt">
+                                	<div class="fl per20 line-vertical"></div>
+                               		<form id="updateForm" name="updateForm" action="${ctx}/system/cms/channel/update" method="post" class="layui-form">
+                               			<input type="hidden" id="id" name="id"
+										value="" />
+										<input type="hidden" id="siteId" name="siteId" value=""/>
+										
+										<fieldset class="layui-elem-field layui-field-title">
+										  <legend>基础数据</legend>
+										</fieldset>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label col-lg-3">栏目名称*</label>
+											<div class="layui-inline">
+												<input type="text" name="name" id="name" datatype="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input" value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label col-lg-3">父级栏目*</label>
+											<div class="layui-inline">
+												<input type="hidden" name="pid" id="pid" value="">
+												<input type="text" name="pname" id="pname" class="layui-input" value="" onclick="showChannelZTree();"/>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label col-lg-3">是否有内容 *</label>
+											<div class="layui-inline">
+												<select name="hasContent" id="hasContent" lay-verify="required">
+													<option value="0">是</option>
+													<option value="1">否</option>
+												</select>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label  col-lg-3">编号</label>
+											<div class="layui-inline">
+												<input type="text" name="comcode" id="comcode"  autocomplete="off"
+													class="layui-input" value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label  col-lg-3"></label>
+											<div class="layui-inline" style="color:green;">
+												说明：此处会根据树形结构生成，不用填写
+											</div>
+										</div>
+										
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label  col-lg-3">级别*</label>
+											<div class="layui-inline">
+												<input type="text" name="positionLevel" id="positionLevel"
+													datatype="*" nullmsg="不能为空" errormsg="不能为空！"
+													autocomplete="off" class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label col-lg-3">关键字*</label>
+											<div class="layui-inline">
+												<input type="text" name="keywords" id="keywords" datatype="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label  col-lg-3">描述*</label>
+											<div class="layui-inline">
+												<input type="text" name="description" id="description"
+													datatype="*" nullmsg="不能为空" errormsg="不能为空！"
+													autocomplete="off" class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label col-lg-3">排序*</label>
+											<div class="layui-inline">
+												<input type="text" name="sortno" id="sortno" datatype="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input" value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9">
+											<label class="layui-form-label col-lg-3">状态 *</label>
+											<div class="layui-inline">
+												<select name="active" id="active" lay-verify="required">
+													<option value="1">是</option>
+													<option value="0">否</option>
+												</select>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item change-submit col-lg-9 tc">
+											<label class="layui-form-label  col-lg-3"></label>
+											<div class="layui-inline  col-lg-6">
+												<button type="button" class="layui-btn"   onclick="dosubmit();" id="smtbtn">保存</button>
+											</div>
+										</div>
+                               		</form>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 主体内容结束 -->
+        <@h.footer />
+    </div>
+    
+    <div id="div_channelZtree" style='display:none;'>
+        <ul id="channelZtree" class="ztree"></ul>
+    </div>
+	<div id="tpl_modify_wrap" style="display:none;">
+		<form id="updateForm_hidden" name="updateForm_hidden" action="${ctx}/system/cms/channel/updateCmsLinks" method="post" class="hform layui-form">
+										<input type="hidden" id="businessId" name="businessId" value=""/>
+										<input type="hidden" id="siteId" name="siteId" value=""/>
+										<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+										  <legend>后台模板指定</legend>
+										</fieldset>
+										<div class="layui-form-item col-lg-9" cat='pc_40'>
+											<label class="layui-form-label col-lg-3">后台列表模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='pc_ftlListPath_id' type="hidden">
+												<input type="text" name="pc_ftlListPath" id="ftlListPath" datatype_hiden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										
+										<div class="layui-form-item col-lg-9" cat='pc_41'>
+											<label class="layui-form-label col-lg-3">后台更新模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='pc_ftlUpdatePath_id' type="hidden">
+												<input type="text" name="pc_ftlUpdatePath" id="ftlUpdatePath" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='pc_42'>
+											<label class="layui-form-label col-lg-3">后台查看模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='pc_ftlLookPath_id' type="hidden">
+												<input type="text" name="pc_ftlLookPath" id="ftlLookPath" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<fieldset class="layui-elem-field layui-field-title" cat="pc" style="margin-top: 50px;">
+										  <legend>PC模板指定</legend>
+										</fieldset>
+										<div class="layui-form-item col-lg-9" cat='pc_child'>
+											<label class="layui-form-label col-lg-3">前台栏目子类继承路径（默认和前台列表一致）*</label>
+											<div class="layui-inline col-lg-6">
+												<input type="text" name="pc_childFtl" id="childFtl" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='pc_10'>
+											<label class="layui-form-label col-lg-3">前台列表模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='pc_frontFtl_id' type="hidden">
+												<input type="text" name="pc_frontFtl" id="frontFtl" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='pc_11'>
+											<label class="layui-form-label col-lg-3">前台列表DOM模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='pc_frontDomFtl_id' type="hidden">
+												<input type="text" name="pc_frontDomFtl" id="frontFtl" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='pc_znr'>
+											<label class="layui-form-label col-lg-3">添加内容(子节点)时前台访问详情模板*</label>
+											<div class="layui-inline col-lg-6">
+												<input type="text" name="pc_nodeftlPath" id="nodeftlPath" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+												<input type="checkbox" name="pc_update">是否更新旧内容
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="pc_jump">
+											<label class="layui-form-label col-lg-3">前台跳转方式 *</label>
+											<div class="layui-inline">
+												<select name="pc_jumpType"  lay-ignore  id="jumpType_pc">
+													<option value="0">[默认]返回前台列表模板</option>
+													<option value="2">服务器转发</option>
+													<option value="1">自定义HTTP跳转</option>
+												</select>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="pc_link">
+											<label class="layui-form-label col-lg-3">前台访问链接</label>
+											<div class="layui-inline col-lg-6">
+												<input type="text" name="pc_link" id="link"  autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9"  cat="pc_info">
+											<label class="layui-form-label col-lg-3"></label>
+											<div class="layui-inline col-lg-6">
+												<div class="layui-inline valid-info" style="color:green;">说明：不传会取默认/f/mp/siteId/bussnissId，如果有https跳转请填写。
+												在跳转方式为"默认"下，此设置无意义</div>
+											</div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="pc_islogin">
+											<label class="layui-form-label col-lg-3">登陆访问*</label>
+											<div class="layui-inline">
+												<select name="pc_loginuser"  lay-ignore  id="pc_loginuser">
+													<option value="0">不需要登录</option>
+													<option value="1">需要登录</option>
+												</select>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>		
+										<fieldset class="layui-elem-field layui-field-title" cat="wap" style="margin-top: 50px;">
+										  <legend>手机端模板</legend>
+										</fieldset>
+										<div class="layui-form-item col-lg-9" cat='wap_child'>
+											<label class="layui-form-label col-lg-3">前台栏目子类继承路径（默认和前台列表一致）*</label>
+											<div class="layui-inline col-lg-6">
+												<input type="text" name="wap_childFtl" id="childFtl" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='wap_10'>
+											<label class="layui-form-label col-lg-3">前台列表模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='wap_frontFtl_id' type="hidden">
+												<input type="text" name="wap_frontFtl" id="frontFtl" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='wap_11'>
+											<label class="layui-form-label col-lg-3">前台列表DOM模板路径*</label>
+											<div class="layui-inline col-lg-6">
+												<input name='wap_frontDomFtl_id' type="hidden">
+												<input type="text" name="wap_frontDomFtl" id="frontFtl" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat='wap_znr'>
+											<label class="layui-form-label col-lg-3">添加内容(子节点)时前台访问详情模板*</label>
+											<div class="layui-inline col-lg-6">
+												<input type="text" name="wap_nodeftlPath" id="nodeftlPath" datatype_hidden="*"
+													nullmsg="不能为空" errormsg="不能为空！" autocomplete="off"
+													class="layui-input"
+													value="">
+												<input type="checkbox" name="wap_update">是否更新旧内容
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="wap_jump">
+											<label class="layui-form-label col-lg-3">前台跳转方式 *</label>
+											<div class="layui-inline">
+												<select name="wap_jumpType" lay-ignore id="jumpType_wap">
+													<option value="0">[默认]返回前台列表模板</option>
+													<option value="2">服务器转发</option>
+													<option value="1">自定义HTTP跳转</option>
+												</select>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="wap_link">
+											<label class="layui-form-label col-lg-3">前台访问链接</label>
+											<div class="layui-inline col-lg-6">
+												<input type="text" name="wap_link" id="link"  autocomplete="off"
+													class="layui-input"
+													value="">
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="wap_info">
+											<label class="layui-form-label col-lg-3"></label>
+											<div class="layui-inline col-lg-6">
+												<div class="layui-inline valid-info" style="color:green;">说明：不传会取默认/f/mp/siteId/bussnissId，如果有https跳转请填写。
+												在跳转方式为"默认"下，此设置无意义</div>
+											</div>
+										</div>
+										<div class="layui-form-item col-lg-9" cat="wap_islogin">
+											<label class="layui-form-label col-lg-3">登陆访问*</label>
+											<div class="layui-inline">
+											 	<select name="wap_loginuser"  lay-ignore  id="wap_loginuser">
+													<option value="0">不需要登录</option>
+													<option value="1">需要登录</option>
+												</select>
+											</div>
+											<div class="layui-inline valid-info"></div>
+										</div>	
+										
+				</form>
+	</div>
+</body>
+</html>

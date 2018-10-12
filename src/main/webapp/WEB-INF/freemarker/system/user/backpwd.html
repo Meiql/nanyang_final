@@ -1,0 +1,119 @@
+<#ftl output_format="HTML" auto_esc=true> 
+<@h.commonHead title="找回密码" keywords="" description=""/>
+
+<script src="${ctx}/js/validform/validform.min.js"></script>
+<link rel="stylesheet" href="${ctx}/js/validform/validform.css" media="all">
+<style type="text/css">
+			.login_name input{
+				width: 80%;border:0;border-bottom: 2px solid #dddddd;
+				height: 40px;padding-left: 10px;font-size: 16px;
+				font-family: "微软雅黑";
+				}
+			.login_name .input_div{
+				height: 40px;float: left;width: 60%;
+			}
+			.login_name .yzm_img{
+				height: 40px;float: left;width: 40%;overflow: hidden;
+			}
+			.login_name .input_div input{width: 98%;height: 40px;border: 0;border-bottom: 2px solid #DDDDDD;}
+</style>
+</head>
+<body>
+	<div class="layui-layout layui-layout-admin">
+		<!-- 主体内容开始 -->
+					<div class="layui-tab-item layui-show">
+							<div class="layui-main">
+						          <div id="LAY_preview" class="layui-my-form">
+				          				<header class="larry-personal-tit">
+											<span>找回密码</span>
+										</header>
+										<!-- /header -->
+										<form id="validForm" class="layui-form"  method="post" action="${ctx}/system/ajax/sendpwdbymail">
+										<div class="larry-personal-body clearfix changepwd">
+											 	<div class="layui-form-item col-lg-6" >
+													<label class="layui-form-label">账号*</label>
+													<div class="layui-inline col-lg-5">  
+													  	<input type="text" id="account" name="account"  style="width:180px;" datatype="*" nullmsg="请输入账号"  autocomplete="off" class="layui-input" >
+													</div>
+													<div class="layui-inline valid-info"></div>
+												</div>
+												
+					
+												<div class="layui-form-item col-lg-6">
+													<label class="layui-form-label">验证码*</label>
+													<div class="layui-inline">  
+														<div class="login_name">
+															<div style="overflow: hidden;width: 80%;display: inline-block;">
+																<div class="input_div">
+																	<input type="text" id="captcha" name="captcha"  datatype="*" nullmsg="请填写验证码"  placeholder="请输入验证码" />
+																</div>
+																<div class="yzm_img">
+																	<img style="width: 100%;height: 100%;" id="captchaImg" onclick="reloadValidateCode();" src="${ctx}/getCaptcha"  align="absmiddle" />
+																	<input type="hidden" id="ValidateCodeNum" value="" />
+																</div>
+															 </div>
+														  </div>
+														  <div class="layui-inline valid-info"></div>
+													</div>
+												</div>
+												
+
+												<div class="layui-form-item change-submit  col-lg-6">
+													<label class="layui-form-label"></label>
+													<div class="layui-inline">
+<!-- 														<input type="button" class="layui-btn" id="btnsendmail" value="发送邮件" onclick="sendmail();"/> -->
+														<button type="button" class="layui-btn" id="smtbtn">发送邮件</button>
+													</div>
+												</div>
+												</form>
+										</div>
+								  </div>
+							</div>
+					</div>
+		<!-- 主体内容结束 -->
+		<@h.footer />
+	</div>
+</body>
+
+<script>
+	 jQuery(function(){
+		 /*
+		 init_valid(_before,_after)
+		 @_before:提交表单前，调用 的函数   可以为空，一般有validform处理不了，独自进行处理时使用
+		 @_after:保存成功后，调用的函数  可以为空，一般为对应的列表页面
+		 */
+		 springrain.initValid(null,function(_json){
+			 if(_json.status == 'success'){
+				 springrain.alert("校验码已发送至您的邮箱"+_json.data);
+			 }else{
+			     springrain.error("邮件发送失败："+_json.message);
+			 }
+		 });
+	 });
+	 
+/* 	 function sendmail(){
+		 var pageurl="${ctx}/system/ajax/sendpwdbymail";
+		 var listurl=null;
+		 var account=$("#account").val();
+		 if(account==null||account==''){
+			 springrain.error("账号不能为空！");
+			 return false;
+		 }
+		 var captcha=$("#captcha").val();
+		 if(captcha==null||captcha==''){
+			 springrain.error("验证码不能为空！");
+			 return false;
+		 }
+		 var mydata={"account":account,"springraintoken":springraintoken,"captcha":captcha};
+		 var msg=null;
+		 springrain.ajaxpostonlayer(pageurl,listurl,mydata,msg,function(myjson){
+			 if(myjson.status=='success'){
+				 springrain.alert("校验码已发送至您的邮箱"+myjson.data);
+			 }else{
+				 springrain.error("邮件发送失败："+myjson.message);
+			 }
+		 });
+	 } */
+</script>
+</html>
+

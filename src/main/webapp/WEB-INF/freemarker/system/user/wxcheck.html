@@ -1,0 +1,53 @@
+<#ftl output_format="HTML" auto_esc=true> 
+<@h.commonHead title="微信认证" keywords="" description=""/>
+<link rel="stylesheet" href="${ctx}/css/weui/weui.min.css">
+<style type="text/css">
+body{background-color: #4D4D4D;}
+</style>
+
+<div style="text-align: center;margin-top: 8%;">
+	 <font style="color:white;font-size: 16px;">微信认证</font><br/><br/>
+<!--  		<img src="http://pan.baidu.com/share/qrcode?w=300&h=300&url=${wxurl!''}"/> <br/><br/>  -->
+ 		   <img src="${ctx}${qrimgurl!''}"/> <br/><br/> 
+	<#if msg??>
+	   <#if msg=='error'>
+		 <span style="font-size:12px;color:white;"><i class="weui-icon-warn"></i>认证失败，请使用正确的微信号进行扫描！</span>
+	   <#else>
+	     <span style="font-size:12px;color:white;"><i class="weui-icon-success"></i>认证成功！</span>	 
+	   </#if>    
+	<#else>     
+	     <span style="font-size:12px;color:white;"><i class="weui-icon-info-circle"></i>请扫描上面二维码进行认证</span>
+	</#if>
+</div>
+
+<script>
+$(function() {
+    (function checkwx() {
+        $.ajax({
+      	    url:"${ctx}/system/ajax/wxcheck",
+            dataType: "json",
+            timeout: 5000,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus == "timeout") { 
+                	checkwx(); // 请求超时
+                } else { 
+                    // 其他错误，如网络错误等
+                	setTimeout(function(){
+                		checkwx();
+                	},3000);
+                }
+            },
+            success: function (json) {
+               if(json.data!=null&&json.data!=''){
+            	    location.href="${ctx}/system/index?springraintoken=${springraintoken!''}";
+               }else{
+                	setTimeout(function(){
+                		checkwx();
+                	},3000);
+               }
+            }
+        });
+    })();
+    
+});
+</script>

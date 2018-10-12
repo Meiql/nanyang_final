@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信认证</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="">
+<link rel="stylesheet" href="${ctx}/css/weui/weui.min.css">
+</head>
+<body>
+	<div class="page">
+		<div class="weui-msg">
+			<#if msg?? && msg=='success'>
+			<div class="weui-msg__icon-area">
+				<i class="weui-icon-success weui-icon_msg"></i>
+			</div>
+			<div class="weui-msg__text-area">
+				<h2 class="weui-msg__title">认证成功</h2>
+				<p class="weui-msg__desc">电脑网页将自动进行跳转,请关闭此页面。</p>
+			</div>
+			<#else>
+			<div class="weui-msg__icon-area">
+				<i class="weui-icon-warn weui-icon_msg"></i>
+			</div>
+			<div class="weui-msg__text-area">
+				<h2 class="weui-msg__title">认证失败</h2>
+			</div>
+			</#if>
+			<div class="weui-msg__opr-area" style="margin-top: 30px;">
+				<p class="weui-btn-area">
+					<a href="javascript:void(0);" onclick="closewxpage();"
+						class="weui-btn weui-btn_default">关闭</a>
+				</p>
+			</div>
+			<div class="weui-msg__extra-area">
+				<div class="weui-footer">
+					<p class="weui-footer__links">
+						<a href="javascript:void(0);" class="weui-footer__link">北京中云微迅信息技术有限公司</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+function closewxpage(){
+	WeixinJSBridge.call('closeWindow');  
+}
+</script>
+</html>
+
+

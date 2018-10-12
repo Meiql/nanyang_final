@@ -1,0 +1,540 @@
+/****     通用      ****/
+.mobile_top{width: 100%;height: 3.1rem;}
+.mobile_top img{width: 100%;display: block;}
+/****   警方咨询    ****/
+.advisory_list{width: 100%;}
+.advisory_list ul li{width: 100%;height:3.5rem;position: relative;margin-bottom: 4px;}
+.advisory_list ul li img{width: 100%;height: 100%;display: block;}
+.advisory_list .advisory_text{width:100%;height:1.01rem;padding-top:0.26rem;position:absolute;left:0;right:0;bottom:0;background: url(../images/icon_01.png) no-repeat; background-size: 100%;color: #fff;font-size: 0.26rem;padding-left: 0.25rem;font-weight: bold;}
+.addetail_main{width: 100%;}
+.addetail_main .title{width: 100%;padding: 0.5rem 0.46rem 0.2rem 0.65rem;}
+.addetail_main .title h4{line-height: 0.46rem;font-size:0.32rem;color: #368bf8;font-weight: bold;position: relative;}
+.addetail_main .title .time{font-size: 0.26rem;color:rgba(54, 139, 248, 0.54);display: inline-block;line-height: 0.28rem;}
+.addetail_main .icon_bid{display: block;width: 0.1rem;height: 0.28rem;background: #368bf8;position: absolute;top:0.08rem;left: -0.15rem;}
+.addetail_main .img{width:100%;height: 3.5rem;}
+.addetail_main .img img{width: 100%;height: 100%;display: block;}
+.addetail_main .text{width: 100%;padding: 0.45rem 0.4rem 0;}
+.addetail_main .text .p{line-height: 0.48rem;color: #686a6b;font-size:0.22rem;margin-bottom: 0.45rem;}
+.addetail_main .text img{max-width:100%;}
+/****   便民服务   ****/
+.peanswer_list{width: 100%;padding: 0.15rem 0.25rem;}
+.peanswer_list ul li{width: 100%;min-height: 3.43rem;border-radius:0.1rem;margin-bottom: 0.08rem;overflow: hidden;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 3px 2px rgba(7, 0, 2, 0.05);box-sizing: border-box;}
+.peanswer_list li .pe_title{width: 100%;height: 1.42rem;background: #f6f6fc;padding: 0 0.25rem 0 0.56rem;}
+.pe_title h5{font-size: 0.28rem;color: #686a6b;line-height: 0.4rem;font-weight: bold;position: relative;}
+.peanswer_list .pe_cont{width: 100%;min-height: 2.01rem;background: #FFF;padding: 0 0.25rem 0 0.25rem;}
+.pe_cont .p{font-size: 0.22rem;line-height:0.4rem;color: #a3a7a8;position: relative;padding-left: 0.31rem;}
+.pe_cont .view_all{margin:0 auto;line-height: 0.31rem;font-size: 0.2rem;color: #388cf8;display:block;width: 1.26rem;margin-top: 0.08rem;}
+.icon_under:before{content:'\3000';}
+.icon_ask:before{content:'\3000';}
+.icon_reply:before{content:'\3000';}
+.icon_replyx:before{content:'\3000';}
+i.icon_under{width: 0.31rem;height: 0.31rem;display: inline-block;background:url(../images/icon_02.png) no-repeat center;background-size:100% 100%;white-space:nowrap;letter-spacing:-1em;text-indent:-99em;color:transparent;margin-right:0.1rem;}
+i.icon_ask{width: 0.24rem;height: 0.23rem;display: block;background:url(../images/icon_03.png) no-repeat;-webkit-background-size: 100%;background-size: 100%;position: absolute;    top: 0.05rem;left: -0.3rem;}
+i.icon_reply{width: 0.24rem;height: 0.23rem;display: block;background:url(../images/icon_04.png) no-repeat;-webkit-background-size: 100%;background-size: 100%;position: absolute;    top: 0.065rem;left: 0.01rem;}
+i.icon_replyx{width: 0.24rem;height: 0.23rem;display: block;background:url(../images/icon_04.png) no-repeat;-webkit-background-size: 100%;background-size: 100%;position: absolute;top: 0.05rem;left:-0.3rem;}
+/****   便民服务详情   ****/
+.peande_main{width: 100%;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 3px 2px rgba(7, 0, 2, 0.05);box-sizing: border-box;border-radius:5px;overflow: hidden;}
+.de_title{width: 100%;min-height: 1.08rem;background: #f6f6fc;border-bottom: 1px solid #e6e6e6;padding: 0 0.25rem 0 0.56rem;}
+.de_title h4{font-size: 0.28rem;line-height: 0.36rem;color: #686a6b;font-weight: bold;position: relative;margin: 0.2rem 0;}
+.de_cont{width: 100%;min-height:0rem;background: #fff;padding: 0.65rem 0.55rem 0;}
+.de_cont .p{line-height: 0.35rem;font-size: 0.24rem;color: #686a6b;position: relative;margin-bottom: 0.1rem;}
+i.icon_pack{width: 0.31rem;height: 0.31rem;display:block;background:url(../images/icon_05.png) no-repeat center;background-size:100% 100%;white-space:nowrap;letter-spacing:-1em;text-indent:-99em;color:transparent;margin:0 auto;}
+.evaluate{width: 100%;height: 2.11rem;background: #fff;box-shadow: inset 0px 7px 7px 0px rgba(7, 0, 2, 0.1);}
+.evaluate ul.ev_list{padding: 0.36rem 0 0 1.09rem;}
+ul.ev_list li{width: 0.32rem;height: 1.53rem;float: left;margin: 0 0.3rem;border: 1px solid #93c1fb;box-sizing:border-box;border-radius: 0.2rem;font-size: 0.2rem;color: #93c1fb;}
+ul.ev_list .active{background: #368bf8;color: #fff;}
+
+/****   办事指南   ****/
+.woguide_main{width: 100%;padding-top: 0.52rem;}
+.woguide_main .tab_menu{padding: 0 1.02rem;}
+.tab_menu ul{width: 100%;height: 0.44rem;border: 1px solid #90befa;border-radius: 1rem;overflow: hidden;box-sizing:border-box;}
+.tab_menu ul li{width:33.33333%;height: 0.42rem;text-align: center;float: left;}
+.tab_menu ul li span{color: #90befa;font-size: 0.24rem;display:block;margin: 0.09rem 0;border-right:0.03rem solid #90befa;}
+.tab_menu ul li:last-child span{border-right:0.03rem solid transparent;}
+.tab_menu ul .selected{background: #368bf8;}
+.tab_menu ul .selected span{color: #fff;border-color:#368bf8;}
+.woguide_box{width: 100%;min-height: 6.76rem;background: url(../images/icon_06.png) center top repeat-y;background-size:5px 5px;padding: 0 0.3rem;}
+.woguide_list{width: 100%;padding-top: 0.75rem;}
+.woguide_list li{width: 3.15rem;margin-bottom: 0.4rem;box-sizing:border-box;position: relative;}
+.woguide_list li i.icon_wgid{width:0.5rem;height:0.5rem;display:block;border-radius:100%;position:absolute;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);-o-transform:translateY(-50%);transform:translateY(-50%);background:#f4f8fc url(../images/icon_07.png) center center no-repeat;background-size: 0.25rem 0.25rem;}
+.woguide_list li a{font-size: 0.24rem;color: #626466;font-weight: bold;line-height: 0.32rem;height: 0.64rem;overflow: hidden;}
+/****   搜索   ****/
+.sb-search{position:fixed;margin-top:0px;width:0%;min-width:0.64rem;height:0.64rem;overflow:hidden;-webkit-transition:width 0.3s;-moz-transition:width 0.3s;transition:width 0.3s;-webkit-backface-visibility:hidden;right: 0.17rem;bottom: 0.26rem;z-index: 999;}
+.sb-search-input{position:absolute;top:0;right:0;border:none;outline:none;background:#24b2fe;width:100%;height:0.64rem;margin:0;z-index:10;padding:0.20rem 0rem 0.20rem 0.26rem;font-family:inherit;font-size:0.18rem;color:#fff;line-height:0.64rem;border-radius: 10rem;}
+.sb-search-input::-webkit-input-placeholder{color:#fff;}
+.sb-search-input:-moz-placeholder{color:#fff;}
+.sb-search-input::-moz-placeholder{color:#fff;}
+.sb-search-input:-ms-input-placeholder{color:#fff;}
+.sb-icon-search,.sb-search-submit{width:0.64rem;height:0.64rem;display:block;position:absolute;right:0;top:0;padding:0;margin:0;line-height:0.64rem;text-align:center;cursor:pointer;}
+.sb-search-submit{background:#fff; /* IE needs this */-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */filter:alpha(opacity=0); /* IE 5-7 */opacity:0;color:transparent;border:none;outline:none;z-index:-1;}
+.sb-icon-search{color:#fff;background:url(../images/icon_09.png) no-repeat;z-index:90;font-size:22px;font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;-webkit-font-smoothing:antialiased;background-size: 100% 100%;}
+.sb-icon-search:before{content:" ";width:0.28rem;height:0.28rem;display:block;background:url(../images/icon_10.png);background-size:100%;}
+/**** Open state ****/
+.sb-search.sb-search-open,.no-js .sb-search{width:90%;}
+.sb-search.sb-search-open .sb-search-input{padding-right: 0.70rem;}
+.sb-search.sb-search-open .sb-icon-search,.no-js .sb-search .sb-icon-search{background:transparent;color:#fff;z-index:11;}
+.sb-search.sb-search-open .sb-search-submit,.no-js .sb-search .sb-search-submit{z-index:90;}
+/****  办事指南-详情   ****/
+.wgdetail_main{width:100%;padding: 0rem 0.25rem 0;}
+.wgdetail_cont{width: 100%;padding: 0 0.45rem 0 0.40rem;background: #fff;}
+.wgdetail_cont img{max-width: 100%;}
+.wgdetail_cont h4{text-align: center;line-height: 0.32rem;font-size: 0.24rem;color: #388cf8;font-weight: bold;}
+.wgdetail_cont .xarrow{width:0.25rem;height: 0.25rem;margin: 0 auto;display: block;}
+.wgdetail_cont .summary{font-size: 0.2rem;color: #686a6b;line-height: 0.4rem;}
+.wgdetail_cont .wghwu{font-size: 0.2rem;color: #686a6b;font-weight: bold;margin-right: 0.15rem;}
+.wgdetail_cont .wgbox{height: 0.13rem;background:rgba(104, 106, 107, 0.16)}
+/****  微矩阵   ****/
+.mmatrix_list{width: 100%;padding: 0rem 0.71rem 0;}
+.mmatrix_list li{width:100%;min-height: 1.22rem;margin-bottom: 0.34rem;}
+.mmatrix_list li .mimg{width:1.16rem;height: 1.16rem;border-radius: 100%;border: 3px solid #fff;margin-right: 0.15rem;overflow: hidden;}
+.mmatrix_list li .mimg img{width: 100%;height: 100%;display: block;}
+.mmatrix_list li .mcont{height: 0.67rem;border-bottom:1px solid rgba(56, 189, 255, 0.15);line-height: 0.67rem;}
+.mcont h4{height: 100%;font-weight: bold;color: #626466;border-bottom: 0.06rem solid #1aacfe;    display: inline-block;box-sizing: border-box;max-width: 3.1rem;}
+.mcont .onright{width:0.39rem;height: 0.39rem;display: inline-block;margin-top: 0.14rem;}
+.mcont .onright img{width: 100%;height: 100%;display: block;}
+.mmatrix_search{height:0.68rem;width: 3.6rem;margin-left: 2.08rem;border-bottom: 1px solid rgba(56, 189, 255, 0.15);}
+.mmatrix_search .inp_srh{width:100%;border:none;background:rgba(255,255,255,0);outline-style:none;display:block;line-height:0.32rem;height:0.32rem;font-size:0.22rem;padding:0;-webkit-box-flex:1;color:#626466;}
+.mmatrix_search .btn_srh{width: 0.46rem;height: 0.46rem;background:#14a9fe url(../images/icon_10.png) center no-repeat;background-size:0.22rem 0.22rem;border: 0;text-indent: -9999px;border-radius: 10rem;}
+/****   甘肃公安-交管业务   ****/
+/****   甘肃公安-交管业务-机动车违法信息查询   ****/
+.carillegalinquir_main{width: 100%;}
+.carillegalinquir_tab{width: 100%;padding-left: 0.82rem;}
+.carillegalinquir_tab ul li{width: 0.42rem;height: 2.55rem;margin-right: 0.45rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;float: left;line-height: 0.24rem;}
+.carillegalinquir_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.carillegalinquir_tab .active{background: #18abfe;border-color: #18abfe;}
+.carillegalinquir_tab .active a{color:#fff;}
+.carillegalinquir_cont{width: 100%;padding: 0 0.25rem;}
+.carillegalinquir_cont .prompt{width: 100%;height: 2.5rem;background: #fff;padding: 0 0.4rem;margin-bottom: 3px;}
+.prompt h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;font-weight: bold;text-align: center;}
+i.icon_pro{width: 0.23rem;height: 0.23rem;display:inline-block;background:url(../images/icon_14.png) no-repeat center;background-size:100% 100%;white-space:nowrap;letter-spacing:-1em;text-indent:-99em;color:transparent;margin-right: 0.1rem;}
+.icon_pro:before{content:'\3000';}
+.prompt p{font-size: 0.2rem;line-height: 0.40rem;color: #686a6b;}
+.illeglogin_form{width: 100%;padding:0rem 0.4rem 0;background: #fff;}
+.illeglogin_form ul li{width: 100%;padding-left:0.48rem;height:1.1rem;border-bottom: 1px solid #f0f0f0;position: relative;}
+.illeglogin_form ul li:last-child{border-bottom:1px solid transparent;}
+.icon-user { position: absolute; left: 0rem; width:0.26rem; height: 0.28rem; top: 50%; transform: translateY(-50%); }
+.icon-username{background: url(../images/icon_15.png) no-repeat;background-size: 100%;}
+.icon-password{background: url(../images/icon_16.png) no-repeat;background-size: 100%;}
+.icon-verification{background: url(../images/icon_17.png) no-repeat;background-size: 100%;}
+.illeglogin_form ul li .it-illeg{width:100%;border:none;background:rgba(255,255,255,0);outline-style:none;display:block;line-height:0.32rem;height:0.32rem;font-size:0.26rem;padding:0;-webkit-box-flex:1;}
+input.it-illeg::-moz-placeholder{color:rgba(104, 106, 107, 0.75);opacity:1;line-height:0.32rem;}
+input.it-illeg:-ms-input-placeholder{color:rgba(104, 106, 107, 0.75);line-height:0.32rem;}
+input.it-illeg::-webkit-input-placeholder{color:rgba(104, 106, 107, 0.75);line-height:0.32rem;}
+.error_po{height:0.7rem;color: #ed425b;font-size: 0.18rem;}
+.dyhma{height:0.42rem;}
+.dyhma span{color: #686a6b;font-size: 0.18rem;}
+.user-radio{width:0.28rem;height:0.28rem;border-radius:0rem;-webkit-appearance:none;border:0px solid #b8b8b8;box-sizing:border-box;outline:0;background:url(../images/user_check.png) no-repeat;background-size:100%;margin: 0;}
+.user-radio:checked{background:url(../images/user_checked.png) no-repeat;background-size:100%;border:0px solid #12b7f5;}
+.yzma{width:0.8rem;height: 0.4rem}
+.break img{width:0.25rem;height:0.27rem;display: block;}
+.btn{background:-webkit-linear-gradient(top,#14a9fe,#44c4ff);text-align:center;border-radius:0px;color:#fff;width:5.9rem;height:0.84rem;font-size:0.22rem;line-height:0.84rem;margin:0rem auto;display:block;padding: 0 0.2rem;border: none;box-shadow: 0px 10px 10px 0px rgba(7, 0, 2, 0.1);}
+.btn_block{width: 100%;display: block;}
+.electronic_tab{width: 100%;padding-left: 2.51rem;}
+.electronic_tab ul li{width: 0.42rem;height: 1.9rem;margin-right: 0.56rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;float: left;}
+.electronic_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.electronic_tab .active{background: #18abfe;border-color: #18abfe;}
+.electronic_tab .active a{color:#fff;}
+
+ul.recruit_list{width: 100%;padding-top:0rem;}
+ul.recruit_list li{width: 100%;padding:0 0.48rem 0.38rem 0.97rem;position: relative;}
+.re_line{position: absolute;left:0.6rem;width:0.03rem;height: 100%;top: 0;background: #3ec0ff;}
+ul.recruit_list li:nth-last-child(2) .re_line{height: 0%;}
+ul.recruit_list .re_time{height:0.5rem;font-size: 0.26rem;color: #2d465c;font-weight: bold;margin-bottom: 0.07rem;}
+ul.recruit_list .re_detail{/*overflow: hidden;*/width: 100%;border-radius: 5px;}
+.re_detail .re_title{width: 100%;height:0.57rem;background:-webkit-linear-gradient(top,#14a9fe,#44c4ff);padding-left: 0.26rem;padding-right: 0.41rem;border-top-right-radius: 5px;border-top-left-radius: 5px;position: relative;}
+.re_times{position: absolute;top: 0;left:0.37rem;background: #f5f8fc url(../images/icon_20.png) no-repeat;background-size: 100% 100%;width:0.5rem;height:0.5rem;border-radius: 100%;}
+.re_title .h5{height: 0.34rem;line-height: 0.38rem;color: #fff;font-size: 0.22rem;width: 100%;background: url(../images/xiala.png) right center no-repeat;background-size:0.15rem;}
+.re_title .active{background: url(../images/shouqi.png) right center no-repeat;background-size:0.15rem;}
+i.icon_coin{width:0.34rem;height:0.34rem;display: inline-block;background:url(../images/icon_19.png) no-repeat center;background-size:100%;white-space:nowrap;letter-spacing:-1em;text-indent:-99em;color:transparent;margin-right:0.1rem;}
+i.icon_coin:before{content:'\3000';}
+.re_conter{width: 100%;background: #fff;box-shadow: 0px 5px 10px 5px rgba(7, 0, 2, 0.07);border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border:1px solid rgba(161, 177, 194, 0.15);}
+.re_conter dl{padding: 0.24rem 0;margin: 0;}
+.re_conter dl dd{min-height:0.72rem;color:rgba(45, 70, 92, 0.75);font-size:0.22rem;border-bottom:1px solid rgba(161, 177, 194, 0.15);position: relative;margin-left: 0.7rem;padding-right: 0.2rem;}
+.re_conter dl dd:last-child{border-bottom:1px solid transparent;}
+.re_conter dl dd .re_icon{position: absolute;width:0.26rem;height:0.3rem;top: 50%;transform:translateY(-50%);left:-0.4rem;}
+.re_point{background: url(../images/icon_21.png) no-repeat;background-size: 100%;}
+.re_reason{background: url(../images/icon_22.png) no-repeat;background-size: 100%;}
+.re_add{background: url(../images/icon_23.png) no-repeat;background-size: 100%;}
+.re_num{background: url(../images/icon_24.png) no-repeat;background-size: 100%;}
+.re_organ{background: url(../images/icon_25.png) no-repeat;background-size: 100%;}
+.re_mode{background: url(../images/icon_26.png) no-repeat;background-size: 100%;}
+/****   甘肃公安-交管业务-机动车信息查询   ****/
+.carinfoinquiresult_cont{width: 100%;padding: 0 0.25rem;}
+.carinfoinquiresult_list{width: 100%;background: #fff;}
+.carinfoinquiresult_list ul{padding-top: 0.10rem;padding-left: 0.85rem;}
+.carinfoinquiresult_list li{height: 0.93rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.carinfoinquiresult_list li:last-child {border-bottom: 1px solid transparent;}
+.carinfoinquiresult_list li h4{font-size: 0.26rem;color: #686a6b;width: 2.1rem;font-weight: bold;}
+.qu_icon{position: absolute;width:0.25rem;height:0.24rem;top: 50%;transform:translateY(-50%);left:-0.36rem;}
+.qu_size{background: url(../images/icon_27.png) no-repeat;background-size: 100%;}
+.qu_car{background: url(../images/icon_28.png) no-repeat;background-size: 100%;}
+.qu_vlidity{background: url(../images/icon_29.png) no-repeat;background-size: 100%;}
+.qu_monitor{background: url(../images/icon_30.png) no-repeat;background-size: 100%;}
+.qu_status{background: url(../images/icon_31.png) no-repeat;background-size: 100%;}
+.qu_self{background: url(../images/icon_32.png) no-repeat;background-size: 100%;}
+.qu_anchored{background: url(../images/icon_33.png) no-repeat;background-size: 100%;}
+/****   甘肃公安-交管业务-违法代码查询   ****/
+.illegalcoderesult_cont{width: 100%;padding: 0 0.25rem;}
+.icr_box{width: 100%;height: 0.93rem;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.icr_box h4{width: 1.62rem;text-indent: 0.38rem;font-size: 0.26rem;color: #686a6b;font-weight: bold;line-height: 0.32rem;}
+input.icr-illeg{width:100%;border:none;background:rgba(255,255,255,0);outline-style:none;display:block;line-height:0.32rem;height:0.32rem;font-size:0.22rem;padding:0;-webkit-box-flex:1;color: #686a6b;text-indent: 0.1rem;}
+input.icr-illeg::-moz-placeholder{color:rgba(163, 166, 168, 0.4);opacity:1;line-height:0.32rem;}
+input.icr-illeg:-ms-input-placeholder{color:rgba(163, 166, 168, 0.4);line-height:0.32rem;}
+input.icr-illeg::-webkit-input-placeholder{color:rgba(163, 166, 168, 0.4);line-height:0.32rem;}
+.illegalcoderesult_list{width: 100%;background: #fff;}
+.illegalcoderesult_list ul{padding-top: 0.3rem;padding-left: 0.85rem;}
+.illegalcoderesult_list li{border-bottom: 1px solid #f0f6fe;padding:0.31rem 0;}
+.illegalcoderesult_list li:last-child {border-bottom: 1px solid transparent;}
+.illegalcoderesult_list li h4{height: 0.42rem;line-height: 0.42rem;position: relative;font-size: 0.26rem;color: #686a6b;font-weight: bold;width: 1.7rem;}
+/****   甘肃公安-交管业务-报废车辆查询   ****/
+.scrappedcarinquiry_list{width: 100%;background: #fff;box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.scrappedcarinquiry_list ul{padding-left: 0.54rem;}
+.scrappedcarinquiry_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.scrappedcarinquiry_list ul li:last-child {border-bottom: 1px solid transparent;}
+.scrappedcarinquiry_list ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+.carinquiryresult_text{width: 100%;min-height: 4.3rem;box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.02);background: #fff;padding: 0 0.4rem;padding-bottom: 1px;}
+.carinquiryresult_text h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;text-align: center;font-weight: bold;padding: 0.04rem 0;}
+.carinquiryresult_text p{font-size: 0.21rem;color: #686a6b;line-height: 0.38rem;margin-bottom: 0.2rem;}
+/****   甘肃公安-交管业务-车检计算器   ****/
+.prompts{width: 100%;height: 3.33rem;background: #fff;padding: 0 0.4rem;margin-bottom: 3px;}
+.prompts h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;font-weight: bold;text-align: center;}
+.prompts p{font-size: 0.2rem;line-height: 0.44rem;color: #686a6b;margin-bottom: 0.1rem;letter-spacing: 1.5px;}
+.carcheckcalculator_form{width: 100%;background: #fff;box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.carcheckcalculator_form ul{padding-left: 0.54rem;}
+.carcheckcalculator_form ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.carcheckcalculator_form ul li:last-child {border-bottom: 1px solid transparent;}
+.carcheckcalculator_form ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+.calculatorresult_text{width: 100%;background: #fff;box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.02);min-height:4.3rem;padding: 0 0.4rem;position: relative;}
+.calculatorresult_text h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;font-weight: bold;text-align: center;}
+.calculatorresult_text p{line-height: 0.4rem;font-size: 0.2rem;color: #686a6b;margin-bottom: 0.15rem;}
+.symbol{line-height: 0.68rem;height: 0.68rem;color: #686a6b;font-size: 0.2rem;font-weight: bold;position: absolute;left: 0;bottom: 0;right: 0;text-align: center;}
+/****   甘肃公安-户政业务   ****/
+
+/****   甘肃公安-户政业务-身份证办理进度查询   ****/
+.idhandleinquire_main{width: 100%;}
+.idhandleinquire_tab{width: 100%;padding-left: 1.02rem;}
+.idhandleinquire_tab ul li{width: 0.42rem;height: 2.22rem;margin-right: 0.59rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;float: left;}
+.idhandleinquire_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.idhandleinquire_tab .active{background: #18abfe;border-color: #18abfe;}
+.idhandleinquire_tab .active a{color:#fff;}
+.idhandleinquire_cont{width: 100%;padding: 0 0.25rem;}
+.idhandleinquire_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.idhandleinquire_list ul{padding-left: 0.54rem;}
+.idhandleinquire_list ul li{width: 100%;height: 0.92rem;border-bottom: 1px solid #f0f6fe;}
+.idhandleinquire_list ul li:last-child {border-bottom: 1px solid transparent;}
+.idhandleinquire_list ul li h4{width: 1.24rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;}
+.progressquery{width: 100%;margin-top: -0.15rem;}
+.progressquery li{height: 0.63rem;color: #686a6b;box-sizing: border-box;width:3.51rem;margin-bottom: 0.48rem;position: relative;opacity: 0.51;
+filter: alpha(opacity=51);}
+.progressquery .selected{opacity: 1;filter: alpha(opacity=100);}
+.progressquery li .icon_id{position:absolute;top:0;width: 0.63rem;height: 0.63rem;display: block;}
+.progressquery li .icon_id::before{content:' ';width: 0.03rem;height: 0.34rem;background: #3cbfff;position: absolute;transform:translateX(-50%);left: 50%;top:0.69rem;}
+.icon_accept{background: url(../images/icon_34.png) no-repeat;background-size: 100% 100%;}
+.icon_textapproval{background: url(../images/icon_35.png) no-repeat;background-size: 100% 100%;}
+.icon_photoapproval{background: url(../images/icon_36.png) no-repeat;background-size: 100% 100%;}
+.icon_proof{background: url(../images/icon_37.png) no-repeat;background-size: 100% 100%;}
+.progressquery li h4{line-height: 0.30rem;font-size: 0.26rem;font-weight: bold;padding-top: 0.06rem;}
+.progressquery li span.time{line-height: 0.22rem;display: block;font-size: 0.16rem;}
+.progressquery li:nth-last-child(odd){float: right;padding-left: 0.86rem;text-align: left;}
+.progressquery li:nth-last-child(odd) .icon_id{left:0rem;}
+.progressquery li:nth-last-child(even){float: left;padding-right: 0.86rem;text-align: right;}
+.progressquery li:nth-last-child(even) .icon_id{right:0rem;}
+.progressquery li:last-child{margin-bottom: 0;}
+.progressquery li:last-child .icon_id::before{background: transparent;}
+.idhandleinquiresuit_cont{width: 100%;padding: 0 0.25rem;}
+.idhandleinquiresuit_text{width: 100%;min-height: 2.9rem;background:-webkit-linear-gradient(top,#ffffff,#f1f5fc);box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.03);position: relative;}
+.idhandleinquiresuit_text .mark{position: absolute;width: 0.22rem;height: 0.22rem;display: block;top: 0.14rem;left: 0.13rem;}
+/****   甘肃公安-户政业务-受理点信息查询   ****/
+.acceptedinfoinquire_cont{padding: 0 0.25rem;width: 100%;}
+.acceptedinfoinquire_list{width: 100%;background: #fff;box-shadow: 0px 0px 10px 10px rgba(7, 0, 2, 0.02);}
+.acceptedinfoinquire_list ul{padding-left: 0.54rem;}
+.acceptedinfoinquire_list ul li{width: 100%;height: 0.92rem;border-bottom: 1px solid #f0f6fe;}
+.acceptedinfoinquire_list ul li:last-child {border-bottom: 1px solid transparent;}
+.acceptedinfoinquire_list ul li h4{width: 1.56rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.1rem;text-align: right;}
+select.input-large{border:none;outline-style:none;display:block;line-height:0.32rem;height:100%;font-size:0.22rem;padding:0;-webkit-box-flex:1;width:3.46rem;appearance:none;-moz-appearance:none;-webkit-appearance:none;background:url("../images/icon_39.png") no-repeat scroll right center transparent;padding-right:0.18rem;background-size: 0.18rem;color: #388cf8;text-indent: 0.1rem;}
+select::-ms-expand { display: none; }
+.acceptedinquiresult{width: 100%;background: #fff;box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.02);height: 4.47rem;}
+.acceptedinquiresult h4{min-height: 0.57rem;color: #fff;font-size: 0.22rem;background:-webkit-linear-gradient(top,#14a9fe,#44c4ff);padding:0 0.2rem}
+.acceptedinquiresult .aimg{width: 0.31rem;margin: 0 auto;display: block;}
+.inquiresult_list{width: 100%;}
+.inquiresult_list ul{padding-left: 0.71rem;}
+.inquiresult_list ul li{width: 100%;height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.inquiresult_list ul li:last-child {border-bottom: 1px solid transparent;}
+.inquiresult_list ul li h5{font-size: 0.26rem;color: #686a6b;font-weight: bold;line-height: 0.32rem;width: 1rem;}
+.inquiresult_list ul li .img{width: 0.35rem;height: 0.35rem;margin: 0 0.36rem;}
+.inquiresult_list ul li .img img{width: 100%;display: block;}
+.ac_icon{position: absolute;width:0.23rem;height:0.22rem;top: 50%;transform:translateY(-50%);left:-0.36rem;}
+.ac_add{background:url(../images/icon_40.png) no-repeat;background-size: 100%;}
+.ac_tel{background:url(../images/icon_41.png) no-repeat;background-size: 100%;}
+/****   甘肃公安-户政业务-新生儿重名查询   ****/
+.neonatalreinquiry_cont{width: 100%;padding: 0 0.25rem;}
+.neonatalreinquiry_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.neonatalreinquiry_list ul{padding-left: 0.54rem;}
+.neonatalreinquiry_list ul li{width: 100%;height: 0.92rem;border-bottom: 1px solid #f0f6fe;}
+.neonatalreinquiry_list ul li:last-child {border-bottom: 1px solid transparent;}
+.neonatalreinquiry_list ul li h4{width: 2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;}
+/****   弹窗   ****/
+.theme_mask{z-index:13;position:fixed;top:0;width:100%;height:100%;background:#000;opacity:0.7;filter:alpha(opacity=70);-moz-opacity:0.7;max-width:640px;display: none;}
+.theme_win{width:4.3rem;height:3.84rem;background:#fff;border-radius:5px;z-index:14;position:fixed;left:50%;top:50%;-ms-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);overflow: hidden;display: none;}
+.theme_win .title{height: 0.85rem;background: #f6f6f6;padding: 0 0.3rem;}
+.theme_win .title span{color: #686a6b;font-size:0.3rem;font-weight: bold;}
+.close{width: 0.34rem;height: 0.34rem;position: absolute;top:0.25rem;right:0.26rem;z-index: 9;}
+.close img{width: 100%;height: 100%;display: block;}
+.theme_win .win_main{width: 100%;padding:0rem 0.8rem 0;position: relative;}
+.win_main span{display: inline-block;line-height:0.44rem;font-size:0.24rem;color: #686a6b;}
+.login_btn{width: 2.92rem;height: 0.58rem;background:-webkit-linear-gradient(top,#14a9fe,#44c4ff);text-align: center;line-height: 0.58rem;border-radius: 5px;color: #fff;position: absolute;bottom:0.52rem;left: 50%;-ms-transform:translateX(-50%);-moz-transform:translateX(-50%);-o-transform:translateX(-50%);transform:translateX(-50%);font-size: 0.26rem;}
+/****   甘肃公安-户政业务-在线咨询   ****/
+.onlineconsultation_cont{width: 100%;padding: 0 0.25rem;}
+.consultation{width: 100%;height: 7.5rem;background:#fff;}
+.consultation h4{height: 0.3rem;line-height: 0.24rem;font-weight: bold;font-size: 0.24rem;color: #388cf8;text-align: center;padding: 0.04rem 0;}
+.consultation p{font-size:0.21rem;line-height: 0.36rem;margin-bottom: 0.25rem;color: #686a6b;letter-spacing: 1px;}
+.onlineconsultation_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.onlineconsultation_list ul{padding-left: 0.54rem;}
+.onlineconsultation_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.onlineconsultation_list ul li:last-child {border-bottom: 1px solid transparent;}
+.onlineconsultation_list ul li h4{width:1.5rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;}
+.on_yzma{width: 0.6rem;height: 0.4rem;display: block;}
+.on_break img{width: 0.31rem;height: 0.27rem;display: block;}
+textarea.input-weak{border:0;width:100%;text-indent:0rem;line-height:0.46rem;font-size:0.28rem;padding:0;height:3rem;background:transparent;padding-top:0rem;}
+.word{position: absolute;bottom: 0.15rem;right: 0.35rem;font-size: 0.22rem;color: #a3a6a8;}
+/****   甘肃公安-户政业务-在线咨询-咨询结果查询   ****/
+.consultationresults_form{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.consultationresults_form ul{padding-left: 0.54rem;}
+.consultationresults_form ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.consultationresults_form ul li:last-child {border-bottom: 1px solid transparent;}
+.consultationresults_form ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+
+/****  甘肃公安-消防服务  ****/
+
+/****  甘肃公安-消防服务-消防知识 ****/
+.fireinfor_main{width: 100%;}
+.fireinfor_tab{width: 100%;padding-left: 2.10rem;}
+.fireinfor_tab li{width: 0.42rem;height: 1.9rem;float: left;margin-right: 0.47rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;}
+.fireinfor_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.fireinfor_tab .active{background: #18abfe;border-color: #18abfe;}
+.fireinfor_tab .active a{color:#fff;}
+.fireinfor_list{width: 100%;padding: 0 0.21rem;}
+.fireinfor_list ul li{width: 100%;margin-bottom: 0.09rem;}
+.fireinfor_list ul li .ftop{width: 100%;min-height: 1.62rem;padding:0 0.34rem;box-shadow: 0px 11px 11px 0px rgba(7, 0, 2, 0.2);background: #fff;border-top-left-radius: 0.1rem;border-top-right-radius: 0.1rem;}
+.ftop h4{line-height: 0.34rem;font-size: 0.26rem;color: #626466;font-weight: bold;padding-right: 0.15rem;background:url(../images/icon_13.png) right center no-repeat;background-size: 0.09rem 0.12rem;}
+.ftop p{font-size:0.18rem;line-height: 0.28rem;color: #c6c9cc;}
+.fireinfor_list ul li .fimg{width: 100%;height:2.51rem;position: relative;border-bottom-left-radius: 0.1rem;
+    border-bottom-right-radius: 0.1rem;background: #fff;overflow: hidden;}
+.fireinfor_list ul li .fimg img{position: absolute;width: 100%;bottom: 0;height: 100%;}
+/****  甘肃公安-消防服务-消防隐患举报 ****/
+.firehazardreport_cont{width: 100%;padding: 0 0.25rem;}
+.firehazardreportlogin_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.firehazardreportlogin_list ul{padding-left: 0.54rem;}
+.firehazardreportlogin_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.firehazardreportlogin_list ul li:last-child {border-bottom: 1px solid transparent;}
+.firehazardreportlogin_list ul li h4{width:1rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+.firehazardreportregister_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.firehazardreportregister_list ul{padding-left: 0.54rem;}
+.firehazardreportregister_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.firehazardreportregister_list ul li:last-child {border-bottom: 1px solid transparent;}
+.firehazardreportregister_list ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+.complaints_title{height: 0.93rem;padding: 0 0.34rem 0 0.25rem;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.complaints_title h4{height: 0.27rem;line-height: 0.27rem;color: #388cf8;border-left: 0.09rem solid #388cf8;background:url(../images/icon_39.png) center right no-repeat;background-size: 0.12rem;font-size: 0.27rem;padding-left: 0.1rem;width: 100%;box-sizing: border-box;}
+.complaints_text{width: 100%;min-height: 8.72rem;background: #fff;padding: 0 0.4rem;}
+.complaints_text h5{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;text-align: center;font-weight: bold;}
+.complaints_text p{line-height: 0.40rem;color: #686a6b;font-size: 0.21rem;margin-bottom: 0.2rem;}
+.complaints_text p:last-child{margin-bottom: 0;}
+.fillinfo_form{width: 100%;}
+.fillinfo_form ul{padding-left: 0.54rem;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.fillinfo_form ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.fillinfo_form ul li:last-child {border-bottom: 1px solid transparent;}
+.fillinfo_form ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+/****  甘肃公安-消防服务-消防隐患举报-举报回复 ****/
+.reportreply_list{width: 100%;}
+.reportreply_list ul li{width: 100%;min-height: 3.43rem;border-radius:0.1rem;margin-bottom: 0.08rem;overflow: hidden;border: 1px solid rgba(0, 0, 0, 0.1);box-shadow: 0px 0px 3px 2px rgba(7, 0, 2, 0.05);box-sizing: border-box;}
+.reportreply_list li .re_title{width: 100%;min-height: 1.66rem;background: #f6f6fc;padding: 0 0.25rem 0 0.56rem;}
+.re_title h5{font-size: 0.28rem;color: #686a6b;line-height: 0.34rem;font-weight: bold;position: relative;}
+.reportreply_list .re_cont{width: 100%;min-height: 2.01rem;background: #FFF;padding: 0 0.25rem 0 0.56rem;position: relative;}
+.re_cont .p{font-size:0.24rem;line-height:0.44rem;color:#686a6b;height:1.35rem;overflow:hidden;}
+.re_cont .activet{background: url(../images/icon_05.png) no-repeat center;background-size: 100% 100%;}
+i.icon_askt{width: 0.24rem;height: 0.22rem;display: block;background:url(../images/icon_67.png) no-repeat;-webkit-background-size: 100%;background-size: 100%;position: absolute;    top: 0.05rem;left: -0.3rem;}
+i.icon_replys{width: 0.24rem;height: 0.22rem;display: block;background:url(../images/icon_68.png) no-repeat;-webkit-background-size: 100%;background-size: 100%;position: absolute;top: 0.34rem;left: 0.2rem;}
+.reportreply_list .unfold{width: 0.4rem;height: 0.2rem;padding-bottom: 0.16rem;background: url(../images/icon_69.png) center bottom no-repeat;background-size: 0.12rem;display: block;margin: 0 auto;font-size: 0.18rem;color: #388cf8;}
+.reportreply_list .actives{background: url(../images/icon_70.png) center bottom no-repeat;background-size: 0.12rem;}
+.problemdetails{width: 100%;display: none;}
+.problemdetails dd{padding: 0.34rem 0;border-bottom: 1px solid #e4e9f0;}
+.problemdetails dd:last-child {border-bottom: 1px solid transparent;}
+.problemdetails dd h4{font-size: 0.3rem;color: #686a6b;line-height: 0.4rem;font-weight: bold;width: 1.85rem;}
+/****  甘肃公安-网上信访  ****/
+.petition_main{width: 100%;}
+.petition_tab{width: 100%;padding-left: 2.5rem;}
+.petition_tab ul li{width: 0.42rem;height: 1.5rem;float: left;margin-right: 0.56rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;}
+.petition_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.petition_tab .active{background: #18abfe;border-color: #18abfe;}
+.petition_tab .active a{color:#fff;}
+.petition_cont{width: 100%;padding: 0 0.25rem;}
+.petition_text{width: 100%;min-height: 4.28rem;background: #fff;padding: 0 0.4rem;}
+.petition_text h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;text-align: center;margin: 0.05rem 0;}
+.petition_text p{line-height: 0.4rem;font-size: 0.21rem;color: #686a6b;margin-bottom: 0.22rem;}
+.petition_text p:last-child {margin-bottom: 0;}
+.petitionletter_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.petitionletter_list ul{padding-left: 0.54rem;}
+.petitionletter_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.petitionletter_list ul li:last-child {border-bottom: 1px solid transparent;}
+.petitionletter_list ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+/**** 网上信访-信访查询   ****/
+.petitioninquiry_form{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.petitioninquiry_form ul{padding-left: 0.54rem;}
+.petitioninquiry_form ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.petitioninquiry_form ul li:last-child {border-bottom: 1px solid transparent;}
+.petitioninquiry_form ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+
+.inquiryresult{width: 100%;}
+.inquiryresult h4{line-height: 0.43rem;height: 0.43rem;font-size: 0.26rem;color: #686a6b;font-weight: bold;padding-left: 0.98rem;position: relative;}
+.on_icon{position: absolute;width: 0.43rem;height: 0.43rem;left: 0.4rem;transform:translateY(-50%);top: 50%;}
+.icon_answer{background: url("../images/icon_46.png") no-repeat;background-size: 100%;}
+.icon_unsolved{background: url("../images/icon_47.png") no-repeat;background-size: 100%;}
+.result_answer{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);min-height: 1.93rem;}
+.result_answer p{line-height: 0.32rem;font-size: 0.22rem;color: #686a6b;padding-left: 0.98rem;padding-right: 0.38rem;}
+.result_unsolved{width: 100%;background: #fff;min-height: 4.82rem;}
+.result_unsolved .title{line-height: 0.32rem;font-size: 0.22rem;color: #686a6b;width: 1.88rem;text-align: right;}
+.result_unsolved p{line-height: 0.32rem;font-size: 0.22rem;color: #686a6b;padding-right: 0.38rem;}
+/****   甘肃公安-出入境业务   ****/
+.immigration_main{width: 100%;}
+.immigration_cont{width: 100%;padding: 0 0.25rem;}
+.immigration_list{width: 100%;}
+.immigration_list ul li{text-align: center;margin-bottom: 0.5rem;}
+.immigration_list ul li .img{width: 1.13rem;height: 1.13rem;margin: 0 auto;}
+.immigration_list ul li .img img{width: 100%;height: 100%;display: block;}
+.immigration_list ul li h5{height: 0.62rem;line-height: 0.62rem;color: #368bf8;font-weight: bold;font-size: 0.29rem;}
+.immigrationexpress_top{width: 100%;padding-left: 2.9rem;}
+.immigrationexpress_top ul li{width: 0.6rem;height: 2.22rem;border: 1px solid #368bf8;box-sizing: border-box;border-radius: 5rem;font-weight: bold;font-size: 0.34rem;text-align: center;color: #368bf8;}
+.immigrationexpress_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.immigrationexpress_list ul{padding-left: 0.54rem;}
+.immigrationexpress_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.immigrationexpress_list ul li:last-child {border-bottom: 1px solid transparent;}
+.immigrationexpress_list ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+.expressresult_idea{width: 100%;padding-left: 2.53rem;margin-top: -0.36rem;}
+.expressresult_idea ul li{width: 1.19rem;height: 2.75rem;border: 0.04rem solid #e9edf2;border-radius: 0.2rem;font-size: 0.22rem;color: #686a6b;font-weight: bold;}
+.expressresult_list{width: 100%;background: #fff;margin-top: -0.21rem;min-height: 5.01rem;}
+.logistics{ padding-bottom: 0.2rem;}
+.logistics li{position: relative;padding-left: 1.07rem;padding-right: 0.5rem;}
+.logistics li .logis_content{padding-bottom: 0.25rem; border-top: 0px solid #dedede;}
+.logistics li:first-child .logis_content{ border-top: none;}
+.logistics li p:nth-child(1){ margin-bottom: 0.1rem; line-height: 0.36rem; font-size: 0.26rem;color: #686a6b;font-weight: bold;}
+.logistics li p:nth-child(2){ font-size: 0.18rem; margin-bottom: 0;color:rgba(104, 106, 107, 0.46);}
+.logistics li .logis_round{position: absolute; width: 0.03rem; height: 100%;left: 0.72rem; bottom: 0; background: #36bcff;}
+.logistics li .logis_round .logis_line{width: 0.18rem; height: 0.24rem; background:#fff url(../images/icon_51.png) center 0.08rem no-repeat; position: absolute; top:0; left: -0.08rem;padding: 0.08rem 0 0.11rem;background-size: 100%;}
+.logistics li:last-child .logis_round{top: 0;height: 0%;}
+/****   甘肃公安-单页面   ****/
+.adminlicense_main{width: 100%;}
+.policerecord_tab{width: 100%;padding-left: 1.33rem;}
+.policerecord_tab ul li{width:0.32rem;height: 1.95rem;float: left;margin-right: 0.81rem;border: 1px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;}
+.policerecord_tab li a{font-size: 0.2rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.policerecord_tab .active{background: #18abfe;border-color: #18abfe;}
+.policerecord_tab .active a{color:#fff;}
+.policerecord_cont{width: 100%;padding: 0 0.25rem;}
+.icon_filing{width: 0.2rem;height: 0.22rem;display: block;position: absolute;transform:translateY(-50%);top: 50%;background: url(../images/icon_53.png) no-repeat;background-size: 100%;left:0.26rem;}
+/****   甘肃公安-行政许可   ****/
+.adminlicense_list{width: 100%;background: #fff;border-top-left-radius: 5px;border-top-right-radius:5px;}
+.adminlicense_list ul li{height: 0.92rem;padding: 0 0.26rem 0 0.6rem;position: relative;}
+.adminlicense_list ul li a{font-size: 0.26rem;color: #686a6b;line-height: 0.28rem;height: 0.28rem;width: 100%;position: relative;background: url(../images/icon_13.png) center right no-repeat;background-size: 0.1rem;padding-right: 0.1rem;box-sizing: border-box;}
+/****   甘肃公安-防骗专区   ****/
+.anticheatarea_list{width: 100%;background: #fff;border-top-left-radius: 5px;border-top-right-radius:5px;}
+.anticheatarea_list ul li{height: 0.92rem;padding: 0 0.26rem 0 0.6rem;position: relative;}
+.anticheatarea_list ul li a{font-size: 0.26rem;color: #686a6b;line-height: 0.28rem;height: 0.28rem;width: 100%;position: relative;background: url(../images/icon_13.png) center right no-repeat;background-size: 0.1rem;padding-right: 0.1rem;box-sizing: border-box;}
+/****   服务大厅-首页   ****/
+.servicehall_main{width: 100%;}
+.servicehall_list{width: 100%;margin-top: -0.3rem;padding: 0 0.4rem;}
+.servicehall_list ul li{width: 50%;border-bottom: 0px solid #ebedf2;float: left;border-right: 0px solid #ebedf2;box-sizing: border-box;position:relative;}
+.servicehall_list ul li.bor_rig::before{content:"";position:absolute;left:0.4rem;top:0.2rem;width:100%;height:1.65rem;box-sizing:border-box;border-left:1px solid #dde0e5;transform-origin:left top;transform:rotateZ(30deg) scale(1);}
+/*.servicehall_list ul li:nth-last-child(2){border-bottom: 1px solid transparent;}
+.servicehall_list ul li:nth-last-child(1){border-bottom: 1px solid transparent;}*/
+.servicehall_list ul li>a{padding: 0.30rem 0;}
+.servicehall_list ul li .img{width:0.8rem;height:0.8rem;border:0px solid rgba(47, 65, 80, 0.07);margin: 0 auto 0.1rem;}
+.servicehall_list ul li .img img{width: 100%;height: 100%;display: block;}
+.servicehall_list ul li .h4{font-size: 0.28rem;line-height: 0.28rem;color: #626466;font-weight: bold;margin-bottom: 0.04rem;}
+
+/****  甘肃公安-案件回告   ****/
+.casereport_main{width: 100%;}
+.casereport_tab{width: 100%;padding-left: 3rem;}
+.casereport_tab ul li{width: 0.42rem;height: 1.50rem;float: left;margin-right: 0.81rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;}
+.casereport_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.casereport_tab .active{background: #18abfe;border-color: #18abfe;}
+.casereport_tab .active a{color:#fff;}
+.casereport_cont{width: 100%;padding: 0 0.25rem;}
+.casereport_text{background: #fff;width: 100%;min-height: 5.85rem;padding: 0 0.38rem;}
+.casereport_text h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;text-align: center;font-weight: bold;padding: 0.04rem 0;}
+.casereport_text h5{line-height: 0.38rem;font-size: 0.2rem;color: #686a6b;}
+.casereport_text p{line-height: 0.38rem;font-size: 0.2rem;color: #686a6b;padding-left: 0.38rem;}
+.casereport_list{width: 100%;background: #fff;}
+.casereport_list ul{padding-left: 0.54rem;}
+.casereport_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.casereport_list ul li:last-child {border-bottom: 1px solid transparent;}
+.casereport_list ul li h4{width:2.02rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+.casereportinquiresuit_text{width: 100%;min-height: 2.9rem;background:-webkit-linear-gradient(top,#ffffff,#f1f5fc);box-shadow: 0px 0px 9px 9px rgba(7, 0, 2, 0.03);position: relative;}
+.casereportinquiresuit_text .mark{position: absolute;width: 0.22rem;height: 0.22rem;display: block;top: 0.14rem;left: 0.13rem;}
+/****  甘肃公安-网上举报   ****/
+.reportonline_main{width: 100%;}
+.reportonline_tab{width: 100%;padding-left:3.04rem;}
+.reportonline_tab ul li{width:0.32rem;height: 1.50rem;float: left;margin-right: 0.56rem;border: 1px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;}
+.reportonline_tab li a{font-size: 0.2rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.reportonline_tab .active{background: #18abfe;border-color: #18abfe;}
+.reportonline_tab .active a{color:#fff;}
+.reportonline_cont{width: 100%;padding: 0 0.25rem;}
+.reportonline_text{width: 100%;min-height: 5.14rem;background: #fff;padding: 0 0.4rem;}
+.reportonline_text h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;text-align: center;font-weight: bold;}
+.reportonline_text p{line-height: 0.36rem;color: #686a6b;font-size: 0.2rem;margin-bottom: 0.2rem;}
+.reportonline_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.reportonline_list ul{padding-left: 0.54rem;}
+.reportonline_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.reportonline_list ul li:last-child {border-bottom: 1px solid transparent;}
+.reportonline_list ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+/****   甘肃公安-网上投诉   ****/
+.onlinecomplaints_main{width: 100%;}
+.onlinecomplaints_tab{width: 100%;padding-left: 2.5rem;}
+.onlinecomplaints_tab ul li{width: 0.42rem;height: 1.50rem;float: left;margin-right: 0.56rem;border: 2px solid #8fbefa;border-radius: 5rem;box-sizing: border-box;}
+.onlinecomplaints_tab li a{font-size: 0.22rem;color:rgba(54, 139, 248, 0.53);display:block;text-align: center;font-weight: bold;}
+.onlinecomplaints_tab .active{background: #18abfe;border-color: #18abfe;}
+.onlinecomplaints_tab .active a{color:#fff;}
+.onlinecomplaints_cont{width: 100%;padding: 0 0.25rem;}
+.onlinecomplaints_text{width: 100%;min-height: 9.53rem;background: #fff;padding: 0 0.4rem;}
+.onlinecomplaints_text h4{line-height: 0.24rem;font-size: 0.24rem;color: #388cf8;text-align: center;font-weight: bold;}
+.onlinecomplaints_text p{line-height: 0.36rem;color: #686a6b;font-size: 0.2rem;margin-bottom: 0.2rem;letter-spacing:2px;}
+.onlinecomplaints_text li:last-child p{margin-bottom: 0;}
+.onlinecomplaints_list{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.onlinecomplaints_list ul{padding-left: 0.54rem;}
+.onlinecomplaints_list ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.onlinecomplaints_list ul li:last-child {border-bottom: 1px solid transparent;}
+.onlinecomplaints_list ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+/****   甘肃公安-网上投诉-投诉查询   ****/
+.complaintsinquire_form{width: 100%;background: #fff;box-shadow:0px 0px 9px 9px rgba(7, 0, 2, 0.02);}
+.complaintsinquire_form ul{padding-left: 0.54rem;}
+.complaintsinquire_form ul li{width: 100%;min-height: 0.92rem;border-bottom: 1px solid #f0f6fe;position: relative;}
+.complaintsinquire_form ul li:last-child {border-bottom: 1px solid transparent;}
+.complaintsinquire_form ul li h4{width:1.2rem;line-height: 0.32rem;color: #686b6b;font-weight: bold;font-size: 0.26rem;margin-left: -0.2rem;text-align: right;margin-right: 0.2rem;}
+/****   甘肃公安-民意征集  *****/
+.publicopinion_main{width: 100%;}
+.publicopinion_cont{width: 100%;padding: 0 0.25rem;}
+.publicopinion_list{width: 100%;background: #fff;border-top-left-radius: 5px;border-top-right-radius:5px;}
+.publicopinion_list ul li{height: 0.92rem;padding: 0 0.26rem 0 0.6rem;position: relative;}
+.publicopinion_list ul li a{font-size: 0.26rem;color: #686a6b;line-height: 0.28rem;height: 0.28rem;width: 100%;position: relative;background: url(../images/icon_13.png) center right no-repeat;background-size: 0.1rem;padding-right: 0.1rem;box-sizing: border-box;}
+i.icon_pub{width: 0.31rem;height: 0.31rem;display:block;background:url(../images/icon_02.png) no-repeat center;background-size:100% 100%;white-space:nowrap;letter-spacing:-1em;text-indent:-99em;color:transparent;margin:0 auto;}
+i.icon_pub:before{content:'\3000';}
+.publicopinion_title h3{font-size: 0.3rem;line-height: 0.32rem;font-weight: bold;color: #686a6b;}
+.publicopinion_title span{display:inline-block;color: #a3a6a8;font-size: 0.32rem;line-height: 0.32rem;}
+.publicopinionlist_detail{width: 100%;background: #fff;padding-left: 0.45rem;min-height:4.08rem;}
+.publicopinionlist_detail .pub_title{width: 100%;padding: 0.20rem 0;border-bottom: 1px solid rgba(0,0,0,0.05);}
+.pub_title h4{line-height: 0.34rem;font-weight: bold;font-size: 0.24rem;color: #686a6b;}
+.pub_list{width: 100%;}
+.pub_list ul li{line-height: 0.34rem;font-size: 0.24rem;color: #686a6b;margin-bottom: 0.25rem;padding-left: 0.45rem;position: relative;}
+.pub_list ul li:last-child{margin-bottom: 0;}
+.pub_list ul .active{color: #28b4fe;}
+.pub-radio{width:0.34rem;height:0.34rem;border-radius:0rem;-webkit-appearance:none;border:0px solid #b8b8b8;box-sizing:border-box;outline:0;background:url(../images/user_check.png) no-repeat;background-size:100% 100%;margin: 0;position: absolute;left: 0;top: 0;}
+.pub-radio:checked{background:url(../images/user_checked.png) no-repeat;background-size:100% 100%;border:0px solid #12b7f5;}
+/****   更多-首页   ****/
+.more_main{width: 100%;}
+.more_list{width: 100%;margin-top: -0.3rem;padding: 0 0.4rem;}
+.more_list ul li{width: 50%;border-bottom: 0px solid #ebedf2;float: left;border-right: 0px solid #ebedf2;box-sizing: border-box;position: relative;}
+.more_list ul li.bor_rig::before{content:"";position:absolute;left:0.4rem;top:0.2rem;width:100%;height:1.65rem;box-sizing:border-box;border-left:1px solid #dde0e5;transform-origin:left top;transform:rotateZ(30deg) scale(1);}
+/*.more_list ul li:nth-last-child(2){border-bottom: 1px solid transparent;}
+.more_list ul li:nth-last-child(1){border-bottom: 1px solid transparent;}*/
+.more_list ul li>a{padding: 0.30rem 0;}
+.more_list ul li .img{width: 0.8rem;height: 0.8rem;margin: 0 auto 0.1rem;}
+.more_list ul li .img img{width: 100%;height: 100%;display: block;}
+.more_list ul li .h4{font-size: 0.28rem;line-height: 0.28rem;color: #626466;font-weight: bold;margin-bottom: 0.04rem;}
